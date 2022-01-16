@@ -1,0 +1,109 @@
+jdbc:postgresql://localhost:5432/
+db:tiem_code
+user:tiem_code_admin
+pswd:3i1VsPYLgz87
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+create table question_table(
+    id  serial primary key,
+
+    parent_id integer not null,
+    question_id integer not null,
+
+    question_txt text,
+    question_html text,
+    question_image_link varchar(255),
+    question_file_link varchar(255),
+    state_question integer not null,
+
+    answer_txt text,
+    answer_html text,
+    answer_image_link varchar(225),
+    answer_video_link varchar(225),
+    answer_file_link varchar(225),
+    state_answer integer not null,
+
+    hasTest boolean not null,
+    test text,
+
+    title varchar(225),
+
+    create_date date,
+    visible boolean
+);
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+create table user_table(
+      id  serial primary key,
+      user_t_id bigint not null,
+      firstName varchar(225),
+      lastName varchar(225),
+      userName varchar(225),
+      joined_date timestamp WITH TIME ZONE not null,
+      last_request_date timestamp WITH TIME ZONE not null,
+      visible boolean not null
+  );
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+create table suggestion_table(
+      id  serial primary key,
+      user_t_id bigint not null,
+      content text,
+      date timestamp WITH TIME ZONE not null,
+      visible boolean not null
+  );
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+create table notification_table(
+      id  serial primary key,
+      content text,
+      c_time varchar,
+      visible boolean not null
+  );
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+create table video_lesson_table(
+    id  serial primary key,
+
+    title text,
+    video_link varchar(225),
+
+    parent_id integer not null,
+    question_id integer not null,
+
+    create_date date,
+    visible boolean
+);
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+create table user_request_table(
+    id  serial GENERATED ALWAYS AS IDENTITY primary key,
+    user_id bigint not null,
+    user_t_id bigint not null,
+    request_text text,
+    request_date timestamp WITH TIME ZONE not null
+
+);
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+create table video_table(
+    id  serial primary key,
+
+    title varchar(225),
+    video_link varchar(225),
+
+    video_order integer not null,
+    parent_id integer not null,
+
+    create_date date,
+    visible boolean
+);
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+ // tiem_tiem_code
+        // tiem_code_admin
+        // 3i1VsPYLgz87
